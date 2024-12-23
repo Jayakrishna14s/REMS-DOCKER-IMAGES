@@ -1,0 +1,7 @@
+docker network create REMS
+
+docker build -t tomcat ./tomcat
+docker build -t mysql ./mysql 
+
+ docker run --env-file .env --hostname remsdb --network REMS -p 3306:3306 --name MYSQL  mysql
+ docker run --env-file .env --network REMS -p 8080:8080 --name TOMCAT tomcat 
